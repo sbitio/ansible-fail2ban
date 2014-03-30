@@ -17,7 +17,7 @@ Look `defaults/main.yml` for variables you can override.
 
 Jails are defined as:
 
-`
+```yaml
 fail2ban_jails:
   ssh-iptables:
     enabled  : true
@@ -27,7 +27,7 @@ fail2ban_jails:
       sendmail-whois[name=SSH, dest=root, sender=fail2ban@example.com, sendername="Fail2Ban"]
     logpath  : /var/log/secure
     maxretry : 5
-`
+```
 
 Dependencies
 ------------
@@ -37,9 +37,11 @@ None.
 Example Playbook
 -------------------------
 
-    - hosts: servers
-      roles:
-         - { role: sbitmedia.fail2ban }
+```yaml
+- hosts: servers
+  roles:
+     - { role: sbitmedia.fail2ban }
+```
 
 License
 -------
@@ -50,4 +52,3 @@ Author Information
 ------------------
 
 Jonathan Araña Cruz - SB IT Media, S.L.
-
