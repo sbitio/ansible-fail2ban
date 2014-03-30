@@ -1,4 +1,4 @@
-Role Name
+Fail2ban
 ========
 
 Install fail2ban service and configure jails.
