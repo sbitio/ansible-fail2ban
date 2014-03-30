@@ -1,0 +1,19 @@
+---
+galaxy_info:
+  author: Jonathan Araña Cruz
+  description: Manage fail2ban service.
+  company: SB IT Media, S.L.
+  license: license BSD
+  min_ansible_version: 1.5
+  platforms:
+  - name: EL
+    versions:
+    - 6
+  - name: Debian
+    versions:
+    - wheezy
+  categories:
+  - monitoring
+  - network
+  - security
+dependencies: []
