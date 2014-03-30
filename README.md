@@ -40,7 +40,7 @@ Example Playbook
 ```yaml
 - hosts: servers
   roles:
-     - { role: sbitmedia.fail2ban }
+     - { role: jonhattan.fail2ban }
 ```
 
 License
