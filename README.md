@@ -17,6 +17,7 @@ Look `defaults/main.yml` for variables you can override.
 
 Jails are defined as:
 
+`
 fail2ban_jails:
   ssh-iptables:
     enabled  : true
@@ -26,6 +27,7 @@ fail2ban_jails:
       sendmail-whois[name=SSH, dest=root, sender=fail2ban@example.com, sendername="Fail2Ban"]
     logpath  : /var/log/secure
     maxretry : 5
+`
 
 Dependencies
 ------------
