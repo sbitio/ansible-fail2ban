@@ -1,5 +1,5 @@
 ---
-- name: SERVICE | Ensure packages
+- name: fail2ban | Ensure yum packages
   yum: pkg={{ item }} state={{ fail2ban_pkg_state }}
   tags:
     - fail2ban
