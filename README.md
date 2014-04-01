@@ -3,19 +3,21 @@ Fail2ban
 
 Install fail2ban service and configure jails.
 
+This role doesn't touch any upstream provided files. All configuration parts
+are placed in fail2ban's .local files.
+
 Requirements
 ------------
 
-Tested on Debian wheezy and CentOS 6. Likely it works in other versions of Debian and Ubuntu.
+Tested on Debian wheezy and CentOS 6. Likely it works in other versions of
+Debian and Ubuntu.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
-
 Look `defaults/main.yml` for variables you can override.
 
-Jails are defined as:
+Example definition of jails:
 
 ```yaml
 fail2ban_jails:

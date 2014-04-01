@@ -28,3 +28,5 @@ fail2ban_mta: sendmail
 fail2ban_protocol: tcp
 fail2ban_chain: INPUT
 
+# See structure in README.md
+fail2ban_jails: {}
