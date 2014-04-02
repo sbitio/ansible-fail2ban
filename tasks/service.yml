@@ -1,5 +1,5 @@
 ---
-- name: fail2ban | Ensure service is started/stopped
+- name: Ensure service is started/stopped
   service: name={{ fail2ban_service }} state={{ fail2ban_service_state }} enabled={{ fail2ban_service_enabled }}
   tags:
    - fail2ban

@@ -1,5 +1,5 @@
 ---
-- name: fail2ban | Ensure apt packages
+- name: Ensure apt packages
   apt: pkg={{ item }} state={{ fail2ban_pkg_state }}
   tags:
     - fail2ban

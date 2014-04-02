@@ -1,4 +1,0 @@
----
-# This file is never used. Ansible don't allow for conditional defaults for now.
-# See https://github.com/ansible/ansible/issues/6756
-fail2ban_logtarget: SYSLOG

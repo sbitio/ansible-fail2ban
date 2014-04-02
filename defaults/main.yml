@@ -1,6 +1,4 @@
 ---
-# defaults file for fail2ban
-
 fail2ban_service_enabled: yes
 fail2ban_service_state: started
 fail2ban_pkg_state: present
