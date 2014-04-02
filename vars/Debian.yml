@@ -1,2 +1,2 @@
 ---
-_placeholder: ''
+__fail2ban_logtarget: /var/log/fail2ban.log

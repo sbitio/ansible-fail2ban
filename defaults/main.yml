@@ -8,8 +8,10 @@ fail2ban_loglevel: 3
 fail2ban_socket: /var/run/fail2ban/fail2ban.sock
 fail2ban_pidfile: /var/run/fail2ban/fail2ban.pid
 
-#TODO# This value differs in Debian and RedHat.
-fail2ban_logtarget: SYSLOG
+# The value for this variable differs in Debian and RedHat.
+# Ansible doesn't provide a way to define defaults conditionally.
+# We do the trick to provide a default value per OS in tasks/main.yml
+# fail2ban_logtarget:
 
 # Overrides for jail.conf
 fail2ban_ignoreip: 127.0.0.1/8

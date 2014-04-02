@@ -7,6 +7,15 @@
     - service
     - config
 
+- name: Define fail2ban_logtarget
+  set_fact: fail2ban_logtarget={{ __fail2ban_logtarget }}
+  when: fail2ban_logtarget is not defined
+  tags:
+    - fail2ban
+    - setup
+    - service
+    - config
+
 # Debian(setup) specific tasks
 - include: setup-Debian.yml
   when: "ansible_os_family == 'Debian'"
