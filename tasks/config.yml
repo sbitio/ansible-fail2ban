@@ -1,42 +1,39 @@
 ---
-
 - name: Ensure fail2ban.conf
   copy: src={{ item }} dest="{{ fail2ban_conf_dir }}/fail2ban.conf" backup=no owner=root group=root mode=0644
   first_available_file:
     - "fail2ban.conf.{{ ansible_os_family }}"
     - "fail2ban.conf.default"
+  notify:
+    - restart fail2ban
   tags:
     - fail2ban
     - config
-  notify:
-    - restart fail2ban
 
 - name: Set overrides for fail2ban.conf in fail2ban.local
   template: src=fail2ban.local.j2 dest="{{ fail2ban_conf_dir }}/fail2ban.local" backup=no owner=root group=root mode=0644
+  notify:
+    - restart fail2ban
   tags:
     - fail2ban
     - config
-  notify:
-    - restart fail2ban
 
 - name: Ensure jail.conf
   copy: src={{ item }} dest="{{ fail2ban_conf_dir }}/jail.conf" backup=no owner=root group=root mode=0644
   first_available_file:
     - "jail.conf.{{ ansible_os_family }}"
     - "jail.conf.default"
+  notify:
+    - restart fail2ban
   tags:
     - fail2ban
     - config
-  notify:
-    - restart fail2ban
-
-- debug: msg="DEBUG {{fail2ban_jails}}"
 
 - name: Set overrides for jail.conf in jail.local
   template: src=jail.local.j2 dest="{{ fail2ban_conf_dir }}/jail.local" backup=no owner=root group=root mode=0644
+  notify:
+    - restart fail2ban
   tags:
     - fail2ban
     - config
-  notify:
-    - restart fail2ban
 

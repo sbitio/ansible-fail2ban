@@ -7,6 +7,7 @@
     - service
     - config
 
+# See defaults/main.yml for an explanation of this.
 - name: Define fail2ban_logtarget
   set_fact: fail2ban_logtarget={{ __fail2ban_logtarget }}
   when: fail2ban_logtarget is not defined
@@ -16,16 +17,17 @@
     - service
     - config
 
-# Debian(setup) specific tasks
+# Debian(setup) specific tasks.
 - include: setup-Debian.yml
   when: "ansible_os_family == 'Debian'"
 
-# RedHat(setup) specific tasks
+# RedHat(setup) specific tasks.
 - include: setup-RedHat.yml
   when: "ansible_os_family == 'RedHat'"
 
-# Common configuration tasks tasks
+# Common configuration tasks tasks.
 - include: config.yml
 
-# Common service tasks
+# Common service tasks.
 - include: service.yml
+

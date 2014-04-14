@@ -29,4 +29,5 @@ fail2ban_protocol: tcp
 fail2ban_chain: INPUT
 
 # See structure in README.md
+#TODO# Replace by a module
 fail2ban_jails: {}
