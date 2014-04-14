@@ -4,3 +4,8 @@
   tags:
    - fail2ban
    - service
+
+- name: Ensure monit check
+  action: monit_check name=fail2ban pidfile=/var/run/fail2ban/fail2ban.pid 
+  when: monit_service is defined
+
