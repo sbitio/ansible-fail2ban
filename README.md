@@ -6,6 +6,9 @@ Install fail2ban service and configure jails.
 This role doesn't touch any upstream provided files. All configuration parts
 are placed in fail2ban's .local files.
 
+If [`sbitmedia.monit`](https://github.com/sbitmedia/ansible-monit) role is
+available, a Monit check will be placed.
+
 Requirements
 ------------
 
@@ -54,3 +57,4 @@ Author Information
 ------------------
 
 Jonathan Araña Cruz - SB IT Media, S.L.
+
