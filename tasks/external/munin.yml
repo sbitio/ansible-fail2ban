@@ -1,0 +1,9 @@
+---
+- name: Configure fail2ban service in Munin
+  action: munin_plugin
+  args:
+    name: fail2ban
+    config: |
+      user root
+      group root
+

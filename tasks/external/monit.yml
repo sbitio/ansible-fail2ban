@@ -1,0 +1,8 @@
+---
+- name: Configure fail2ban service in Monit
+  action: monit_check
+  args:
+    type: service
+    name: fail2ban
+    pidfile: /var/run/fail2ban/fail2ban.pid 
+

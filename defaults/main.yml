@@ -31,3 +31,10 @@ fail2ban_chain: INPUT
 # See structure in README.md
 #TODO# Replace by a module
 fail2ban_jails: {}
+
+# Switch to skip configuration of monit check.
+fail2ban_monit_skip: no
+
+# Switch to skip configuration of munin plugin.
+fail2ban_munin_skip: no
+

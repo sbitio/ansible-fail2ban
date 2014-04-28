@@ -1,0 +1,11 @@
+---
+- include: external/monit.yml
+  when: monit_service is defined and fail2ban_monit_skip == false
+  tags:
+   - monit
+
+- include: external/munin.yml
+  when: munin_node_service is defined and fail2ban_munin_skip == false
+  tags:
+   - munin
+

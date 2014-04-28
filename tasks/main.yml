@@ -31,3 +31,9 @@
 # Common service tasks.
 - include: service.yml
 
+# Integration with external services.
+- include: external.yml
+  tags:
+   - fail2ban
+   - external
+
