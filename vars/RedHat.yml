@@ -1,2 +1,2 @@
 ---
-__fail2ban_logtarget: SYSLOG
+fail2ban_logtarget: SYSLOG

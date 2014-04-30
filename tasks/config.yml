@@ -1,6 +1,6 @@
 ---
 - name: Ensure fail2ban.conf
-  copy: src={{ item }} dest="{{ fail2ban_conf_dir }}/fail2ban.conf" backup=no owner=root group=root mode=0644
+  copy: src={{ item }} dest="{{ fail2ban_dir_conf }}/fail2ban.conf" backup=no owner=root group=root mode=0644
   first_available_file:
     - "fail2ban.conf.{{ ansible_os_family }}"
     - "fail2ban.conf.default"
@@ -11,7 +11,7 @@
     - config
 
 - name: Set overrides for fail2ban.conf in fail2ban.local
-  template: src=fail2ban.local.j2 dest="{{ fail2ban_conf_dir }}/fail2ban.local" backup=no owner=root group=root mode=0644
+  template: src=fail2ban.local.j2 dest="{{ fail2ban_dir_conf }}/fail2ban.local" backup=no owner=root group=root mode=0644
   notify:
     - restart fail2ban
   tags:
@@ -19,7 +19,7 @@
     - config
 
 - name: Ensure jail.conf
-  copy: src={{ item }} dest="{{ fail2ban_conf_dir }}/jail.conf" backup=no owner=root group=root mode=0644
+  copy: src={{ item }} dest="{{ fail2ban_dir_conf }}/jail.conf" backup=no owner=root group=root mode=0644
   first_available_file:
     - "jail.conf.{{ ansible_os_family }}"
     - "jail.conf.default"

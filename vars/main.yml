@@ -4,4 +4,9 @@ fail2ban_packages:
 
 fail2ban_service: fail2ban
 
-fail2ban_conf_dir: /etc/fail2ban
+fail2ban_dir_conf: /etc/fail2ban
+
+fail2ban_loglevel: 3
+fail2ban_socket: /var/run/fail2ban/fail2ban.sock
+fail2ban_pidfile: /var/run/fail2ban/fail2ban.pid
+

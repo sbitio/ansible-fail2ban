@@ -1,2 +1,2 @@
 ---
-__fail2ban_logtarget: /var/log/fail2ban.log
+fail2ban_logtarget: /var/log/fail2ban.log

@@ -3,17 +3,7 @@ fail2ban_service_enabled: yes
 fail2ban_service_state: started
 fail2ban_pkg_state: present
 
-# fail2ban.conf
-fail2ban_loglevel: 3
-fail2ban_socket: /var/run/fail2ban/fail2ban.sock
-fail2ban_pidfile: /var/run/fail2ban/fail2ban.pid
-
-# The value for this variable differs in Debian and RedHat.
-# Ansible doesn't provide a way to define defaults conditionally.
-# We do the trick to provide a default value per OS in tasks/main.yml
-# fail2ban_logtarget:
-
-# Overrides for jail.conf
+# Jail defaults.
 fail2ban_ignoreip: 127.0.0.1/8
 fail2ban_bantime: 600
 fail2ban_findtime: 600
@@ -21,16 +11,12 @@ fail2ban_maxretry: 3
 fail2ban_backend: auto
 fail2ban_usedns: warn
 
-#TODO# jail.conf Debian only.
+# Debian provided.
 fail2ban_destemail: root@localhost
 fail2ban_banaction: iptables-multiport
 fail2ban_mta: sendmail
 fail2ban_protocol: tcp
 fail2ban_chain: INPUT
-
-# See structure in README.md
-#TODO# Replace by a module
-fail2ban_jails: {}
 
 # Switch to skip configuration of monit check.
 fail2ban_monit_skip: no
