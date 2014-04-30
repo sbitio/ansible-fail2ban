@@ -1,41 +1,44 @@
 # Managed by Ansible
 
 [DEFAULT]
-ignoreip = {{fail2ban_ignoreip}}
-bantime  = {{fail2ban_bantime}}
-findtime = {{fail2ban_findtime}}
-maxretry = {{fail2ban_maxretry}}
-backend  = {{fail2ban_backend}}
-usedns   = {{fail2ban_usedns}}
+ignoreip = {{ fail2ban_ignoreip }}
+bantime  = {{ fail2ban_bantime }}
+findtime = {{ fail2ban_findtime }}
+maxretry = {{ fail2ban_maxretry }}
+backend  = {{ fail2ban_backend }}
+usedns   = {{ fail2ban_usedns }}
 
-{% if ansible_os_family == 'Debian' %}
-destemail = {{fail2ban_destemail}}
-banaction = {{fail2ban_banaction}}
-mta       = {{fail2ban_mta}}
-protocol  = {{fail2ban_protocol}}
-chain     = {{fail2ban_chain}}
+{# Add a note in RedHat files #}
+{% if ansible_os_family == 'RedHat' %}
+# Debian provided action setup.
 {% endif %}
 
-{% for key, value in fail2ban_jails.iteritems() %}
-[{{key}}]
-enabled   = {{value.enabled}}
-{% if value.port is defined %}
-port      = {{value.port}}
-{% endif %}
-filter    = {{value.filter}}
-logpath   = {{value.logpath}}
-{% if value.maxretry is defined %}
-maxretry  = {{value.maxretry}}
-{% endif %}
-{% if value.protocol is defined %}
-protocol  = {{value.protocol}}
-{% endif %}
-{% if value.action is defined %}
-action    = {{value.action}}
-{% endif %}
-{% if value.banaction is defined %}
-banaction = {{value.banaction}}
-{% endif %}
+destemail = {{ fail2ban_destemail }}
+banaction = {{ fail2ban_banaction }}
+mta       = {{ fail2ban_mta }}
+protocol  = {{ fail2ban_protocol }}
+chain     = {{ fail2ban_chain }}
 
-{% endfor %}
+{# Add Debian snippet to RedHat files #}
+{% if ansible_os_family == 'RedHat' %}
+#
+# Action shortcuts. To be used to define action parameter
+
+# The simplest action to take: ban only
+action_ = %(banaction)s[name=%(__name__)s, port="%(port)s", protocol="%(protocol)s", chain="%(chain)s"]
+
+# ban & send an e-mail with whois report to the destemail.
+action_mw = %(banaction)s[name=%(__name__)s, port="%(port)s", protocol="%(protocol)s", chain="%(chain)s"]
+              %(mta)s-whois[name=%(__name__)s, dest="%(destemail)s", protocol="%(protocol)s", chain="%(chain)s"]
+
+# ban & send an e-mail with whois report and relevant log lines
+# to the destemail.
+action_mwl = %(banaction)s[name=%(__name__)s, port="%(port)s", protocol="%(protocol)s", chain="%(chain)s"]
+               %(mta)s-whois-lines[name=%(__name__)s, dest="%(destemail)s", logpath=%(logpath)s, chain="%(chain)s"]
+
+# Choose default action.  To change, just override value of 'action' with the
+# interpolation to the chosen action shortcut (e.g.  action_mw, action_mwl, etc) in jail.local
+# globally (section [DEFAULT]) or per specific section
+action = %(action_)s
+{% endif %}
 
