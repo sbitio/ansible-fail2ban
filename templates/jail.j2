@@ -1,0 +1,5 @@
+[{{ name }}]
+{% for k,v in jail_conf.iteritems() %}
+{{ "%s = %s"|format(k, v) }}
+{% endfor %}
+

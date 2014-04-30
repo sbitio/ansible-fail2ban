@@ -1,0 +1,40 @@
+DOCUMENTATION = '''
+---
+module: fail2ban_jail
+options:
+  name:
+    description: The name of the jail to configure.
+    required: True
+    aliases: []
+  enabled:
+    description: Whether the jail is enabled or not.
+    choices: [true, false]
+    default: true
+    alias: [state]
+  filter:
+    description: Name of the filter to apply.
+    required: true
+  logpath:
+    description: Path to log file to filter. Supports a single logfile in a
+string or a list of several.
+  ignoreregex:
+    description: regex to ignore.
+  maxretry:
+    description: Max retry times.
+  bantime:
+    description: Ban time in seconds.
+  findtime:
+    description: Find time in seconds.
+  action:
+    description: Name of the action to take.
+    required: true
+  port:
+    description: Port for the iptables blocking action.
+  protocol:
+    description: Protocol for the iptables blocking action.
+  backend:
+    description: Backend to use.
+    choices: [auto, polling, gamin, pyinotify]
+    default: auto
+'''
+

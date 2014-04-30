@@ -1,3 +1,12 @@
 ---
+- name: assemble jail.local
+  assemble:
+  args:
+    src:  "{{ fail2ban_dir_parts }}"
+    dest: "{{ fail2ban_dir_conf }}/jail.local"
+  notify:
+    - restart fail2ban
+
 - name: restart fail2ban
-  service: name={{ fail2ban_service }} state=restarted
+  service: name="{{ fail2ban_service }}" state=restarted
+

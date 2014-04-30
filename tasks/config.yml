@@ -29,10 +29,16 @@
     - fail2ban
     - config
 
+- name: Ensure fail2ban parts directory
+  file:
+  args:
+    state: directory
+    path: "{{ fail2ban_dir_parts }}"
+
 - name: Set overrides for jail.conf in jail.local
-  template: src=jail.local.j2 dest="{{ fail2ban_conf_dir }}/jail.local" backup=no owner=root group=root mode=0644
+  template: src=jail.local.j2 dest="{{ fail2ban_dir_parts }}/00_jail.local" backup=no owner=root group=root mode=0644
   notify:
-    - restart fail2ban
+    - assemble jail.local
   tags:
     - fail2ban
     - config
