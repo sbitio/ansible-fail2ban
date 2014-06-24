@@ -1,7 +1,7 @@
 ---
 - name: Ensure fail2ban.conf
   copy: src={{ item }} dest="{{ fail2ban_dir_conf }}/fail2ban.conf" backup=no owner=root group=root mode=0644
-  first_available_file:
+  with_first_found:
     - "fail2ban.conf.{{ ansible_os_family }}"
     - "fail2ban.conf.default"
   notify:
@@ -20,7 +20,7 @@
 
 - name: Ensure jail.conf
   copy: src={{ item }} dest="{{ fail2ban_dir_conf }}/jail.conf" backup=no owner=root group=root mode=0644
-  first_available_file:
+  with_first_found:
     - "jail.conf.{{ ansible_os_family }}"
     - "jail.conf.default"
   notify:
